@@ -1,0 +1,9 @@
+numpy
+numpy-stl
+scipy
+torch
+solidpython
+matplotlib
+imageio
+jupyterlab
+
