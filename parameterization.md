@@ -5,7 +5,7 @@ For the parameterization, we will be using the Poltype2.
 To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
 
 ## Tutorial
-Here we will parameterize a beta-blucose dimer, to be able to parameterize a polymer with beta-glucose subunits. The molecule looks like this:
+Here we will parameterize a beta-blucose dimer, to be able to parameterize a polymer with beta-glucose subunits. It looks like this:
 ![bgdimer](https://github.com/user-attachments/assets/e2cfb451-6813-42a1-8ef6-5f6e8d051ecf)
 
 ### Making the molecule
