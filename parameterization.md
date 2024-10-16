@@ -2,6 +2,7 @@
 
 #### Poltype2
 For the parameterization, we will be using the Poltype2.
+
 To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
 
 ## Tutorial
@@ -13,11 +14,14 @@ Here we will parameterize a beta-blucose dimer, to be able to parameterize a pol
 We will first make the molecule using PyMOL builder. You can download PyMOL [here](https://pymol.org/), and get an academic license if you need it.
 
 The first step is to make a beta-blucose monomer and paramterizing it with Poltype2. Open PyMOL, click `Builder` on the top-right side, and build the glucose ring.
-HINT - You can use the 6-membered ring to start with, that way, you can get the hexagonal ring in one go.
+
+|| HINT - You can use the 6-membered ring to start with, that way, you can get the hexagonal ring in one go. ||
+
 NOTE - If you think the bonda/angles does not look the way they is supposed to look, click the `Sculpt` button on the builder window to get an approximation of the lowest energy structure.
 The beta-glucose monomer looks like this:
 ![monbuilder](https://github.com/user-attachments/assets/adc46ff0-94bc-482e-aef0-9cbd6ca0741a)
 Once you're satisfied with the structure, Go to `File` -> `Export` and export it as a PDB.
+
 NOTE - Since we will use `.sdf` files as inputs to Poltype2, export another copy as a SDF file for later.
 
 However, you see that the `OH` group on the `C1` is not how it occurs in the dimer. This oxygen atom in the dimer (and similarly a polymer, if need be) is connected to a carbon atom, and not a hydrogen.
@@ -191,7 +195,8 @@ $$$$
 ````
 
 ### Poltype input files
-Now we move on to using Poltype. 
+Now we move on to using Poltype.
+
 REMINDER - To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
 
 From the Usage guidelines, we know that we need three more files other than the input sdf file. To parameterize the `BGD.sdf` structure, I have the following three input files:
@@ -240,7 +245,9 @@ echo "------- Poltype2 has exited: `date` --------"
 The details you should know from the Poltype Usage file.
 
 #### Submitting the Job
-Upload the four files on ARC (to a folder) and submit the job using the command `sbatch run-poltype.sh`.
+Upload the four files on ARC (to a folder) and submit the job using the command `sbatch run-poltype.sh`. This will run Poltype for the dimer.
 Assuming everything goes as planned, you should see a `final.xyz` and a `final.key` file in that folder. Download the contents of the folder.
+
+TASK - Now repeat this step in a different folder for the monomer, and run Poltype on that one as well.
 
 ### Building a parameter file
