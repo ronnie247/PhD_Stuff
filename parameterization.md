@@ -15,7 +15,7 @@ We will first make the molecule using PyMOL builder. You can download PyMOL [her
 
 The first step is to make a beta-blucose monomer and paramterizing it with Poltype2. Open PyMOL, click `Builder` on the top-right side, and build the glucose ring.
 
-|| HINT - You can use the 6-membered ring to start with, that way, you can get the hexagonal ring in one go. ||
+** HINT - You can use the 6-membered ring to start with, that way, you can get the hexagonal ring in one go. **
 
 NOTE - If you think the bonda/angles does not look the way they is supposed to look, click the `Sculpt` button on the builder window to get an approximation of the lowest energy structure.
 The beta-glucose monomer looks like this:
