@@ -1,10 +1,14 @@
-Steps to follow to parameterize a polymer.
+# Steps to follow to parameterize a polymer.
 
+#### Poltype2
 For the parameterization, we will be using the Poltype2.
 To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
 
+## Tutorial
 Here we will parameterize a beta-blucose dimer, to be able to parameterize a polymer with beta-glucose subunits. The molecule looks like this:
 ![bgdimer](https://github.com/user-attachments/assets/e2cfb451-6813-42a1-8ef6-5f6e8d051ecf)
+
+### Making the molecule
 
 We will first make the molecule using PyMOL builder. You can download PyMOL [here](https://pymol.org/), and get an academic license if you need it.
 
@@ -24,6 +28,7 @@ Build the beta-glucose dimer, which looks like this, after clicking on `Sculpt`.
 
 Save it as a PDB and an SDF file.
 
+### Structure input files
 So far, we have the following SDF files we will use as inputs:
 The monomer file `BGM.sdf` looks like:
 ````sh
@@ -184,3 +189,58 @@ M  END
 $$$$
 
 ````
+
+### Poltype input files
+Now we move on to using Poltype. 
+REMINDER - To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
+
+From the Usage guidelines, we know that we need three more files other than the input sdf file. To parameterize the `BGD.sdf` structure, I have the following three input files:
+
+#### paths.sh
+The first is the `paths.sh` file, which looks like this for me:
+````sh
+export PATH=/projects/welbornlab/Poltype2/TinkerEx/:$PATH
+export GDMADIR=/projects/welbornlab/Poltype2/bin/
+export PATH=/projects/welbornlab/Poltype2/bin/:$PATH
+export PATH=/home/mondal/miniconda3/envs/xtbenv/bin/:$PATH
+export PSI_SCRATCH=/localscratch/   
+
+````
+The only line you need to change is the `export PATH=/home/mondal/miniconda3/envs/xtbenv/bin/:$PATH` line, which will be the path to your `xtbenv/bin`.
+
+#### poltype.ini
+The second is the `poltype.ini` file, which looks like this for me:
+````sh
+structure=BGD.sdf
+atmidx=400
+new_gdma=True
+gdmacommand_Radius_S=0.80
+prmmodfile=dma4_hfe2023
+````
+Check the first line - it is to have the name of the input `sdf` file. The second line is the first value of the atom types. Poltype will assign atom types here starting from 400. I have used 400 for beta-glucose, and 500 for the files where I have alpha-glucose, but you are free to choose differently, if you have an existing parameter file that overlaps with this numbering.
+
+#### run-poltype.sh
+Finally, we have a submit script for Tinkercliffs on ARC, named `run-poltype.sh` which looks like this:
+````sh
+#!/bin/bash
+#SBATCH -J bgm
+#SBATCH -A welbornlab
+#SBATCH -p normal_q
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=32
+#SBATCH --time=23:00:00
+
+# Run the example
+echo "-------- Starting Poltype2: `date` -------"
+source activate poltype_psi417
+source paths.sh
+python /projects/welbornlab/Poltype2/master/PoltypeModules/poltype.py
+echo "------- Poltype2 has exited: `date` --------"
+````
+The details you should know from the Poltype Usage file.
+
+#### Submitting the Job
+Upload the four files on ARC (to a folder) and submit the job using the command `sbatch run-poltype.sh`.
+Assuming everything goes as planned, you should see a `final.xyz` and a `final.key` file in that folder. Download the contents of the folder.
+
+### Building a parameter file
