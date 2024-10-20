@@ -30,8 +30,8 @@ Since we would need to model the behaviour of that oxygen as it bonds to the nex
 
 
 
-<> Build the beta-glucose dimer, which looks like this, after clicking on `Sculpt`.
-<> ![dimbuilder](https://github.com/user-attachments/assets/915c1a51-5e11-49f3-b4c8-e984f4fd7e02)
+[comment]: <> (This is a comment, it will not be included) Build the beta-glucose dimer, which looks like this, after clicking on `Sculpt`.
+[comment]: <> (This is a comment, it will not be included) ![dimbuilder](https://github.com/user-attachments/assets/915c1a51-5e11-49f3-b4c8-e984f4fd7e02)
 
 Save it as a PDB and an SDF file.
 
