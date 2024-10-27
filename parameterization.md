@@ -233,11 +233,83 @@ Assuming everything goes as planned, you should see a `final.xyz` and a `final.k
 TASK - Now repeat this step in a different folder for the monomer, and run Poltype on that one as well.
 
 ### Identifying the atom types
-Now that we have the parameters for both the monomer and the functionalized monomer. Lets talk about the monomer first.
+Now that we have the parameters for both the monomer and the functionalized monomer. Lets talk about the monomer first. Open the `final.xyz` file of the monomer, and look at the contents.
+My `final.xyz` file for the monomer looks like this:
+````sh
+    24
+     1  C      2.591438   -0.511873   -0.335508      500    3    12    17    19
+     2  O      0.376997   -1.307845   -0.080451      501    3    11
+     3  C      1.131526   -0.162896   -0.476801      502    1     2     5    20
+     4  O     -1.657686   -2.326217    0.028653      503   11    13
+     5  C      0.726455    1.026047    0.383543      504    3     7    10    21
+     6  O     -2.915971    0.253632    0.176162      505    9    14
+     7  C     -0.769743    1.256992    0.293519      506    5     8     9    22
+     8  O     -1.106868    2.240439    1.273274      507    7    15
+     9  C     -1.556303   -0.016723    0.515279      508    6     7    11    23
+    10  O      1.421236    2.183361   -0.077005     509    5    16
+    11  C     -1.010998   -1.142317   -0.343434     510    2     4     9    24
+    12  O      2.900673   -1.467836   -1.344478     511    1    18
+    13  H     -1.848650   -2.836579   -0.774144     512    4
+    14  H     -3.468190   -0.282456    0.768040     513    6
+    15  H     -1.843396    2.760216    0.912316     514    8
+    16  H      1.473920    2.791107    0.679336     515   10
+    17  H      3.180285    0.406509   -0.447465     516    1
+    18  H      3.812661   -1.766067   -1.194504     517   12
+    19  H      2.750134   -0.919583    0.672821     516    1
+    20  H      0.935553    0.080759   -1.534662     518    3
+    21  H      0.953252    0.820114    1.440731     519    5
+    22  H     -1.013476    1.615998   -0.717499     520    7
+    23  H     -1.454259   -0.354853    1.555096     521    9
+    24  H     -1.143683   -0.927498   -1.417403     522   11
+````
+This is the format of a Tinker xyz file. Column 1 is the atom index, Column 2 is the atom name, Columns 3-5 are the x, y and z coordinates. Column 6 is the atom type, which we need, and the rest of the columns are connectivities. These are the atom indices of the atoms this one is connected to. Which means, atom 1 which is carbon of type 500, is connected to atoms 3, 12, 17 and 19.
+Draw the structure of the monomer on paper, that will help you assign the atom types.
+Check the bonding of the different atoms in the structure, and the xyz file, and find out which atom is assigned which number as the atom type.
+HINT - There is only one carbon that is bonded to two hydrogens (which will be equivalent, i.e. having the same atom type), and there is only one oxygen bonded to two carbons.
+This is what my monomer looks like:
+![monomer_types](https://github.com/user-attachments/assets/4da10682-98b3-4fc9-8bd7-e847f9d0ceae)
+
+TASK - Do the same for the functionalized monomer. For that molecule, my `final.xyz` file looks like this:
+````sh
+    33 xxx
+     1  C      3.479111    0.493625    0.128168      400    3    12    26    28
+     2  O      1.396459    0.307329    1.196022      401    3    11
+     3  C      2.090586   -0.088885    0.008697      402    1     2     5    29
+     4  O     -0.443201    0.178185    2.499128      403   11    23
+     5  C      1.320078    0.425287   -1.205393      404    3     7    10    30
+     6  O     -1.937509   -0.719966    0.247539      405    9    13
+     7  C     -0.079058   -0.172042   -1.193846      406    5     8     9    31
+     8  O     -0.868053    0.255098   -2.300710      407    7    24
+     9  C     -0.766954    0.070409    0.145586      408    6     7    11    32
+    10  O      2.001838    0.184923   -2.431080     409    5    25
+    11  C      0.124470   -0.311274    1.318060     410    2     4     9    33
+    12  O      4.240446   -0.203941    1.109174     411    1    27
+    13  C     -3.157410   -0.041505   -0.113163     412    6    14    15    16
+    14  C     -3.679240    0.727713    1.088509     413   13    18    19    20
+    15  C     -4.109919   -1.118695   -0.585282     413   13    17    21    22
+    16  H     -2.944392    0.642555   -0.941484     414   13
+    17  H     -4.307222   -1.823588    0.227020     415   15
+    18  H     -4.613858    1.242880    0.845430     415   14
+    19  H     -2.951192    1.464922    1.434966     415   14
+    20  H     -3.868540    0.030394    1.909048     415   14
+    21  H     -5.060592   -0.679770   -0.901404     415   15
+    22  H     -3.672542   -1.660695   -1.425980     415   15
+    23  H     -0.584053   -0.566064    3.104274     416    4
+    24  H     -0.724154    1.213177   -2.404094     417    8
+    25  H      1.790974   -0.723653   -2.710952     418   10
+    26  H      4.015364    0.419613   -0.819882     419    1
+    27  H      4.071277    0.233531    1.958733     420   12
+    28  H      3.381108    1.559915    0.372178     419    1
+    29  H      2.174553   -1.188334   -0.039048     421    3
+    30  H      1.254571    1.519160   -1.114237     422    5
+    31  H      0.002629   -1.262263   -1.316337     423    7
+    32  H     -0.988749    1.142685    0.259721     424    9
+    33  H      0.247448   -1.407342    1.348164     425   11
+````
+and the atom types look like:
 
 
 ### Building a parameter file
-
 The file `final.key` contains the parameters for the regular and functionalized monomer. We need to copy them to a `.prm` file, which can be read by Tinker when we run and MD using the AMOEBA Force Field. But the `final.key` file also has a lot of comments, which start with a `#` symbol, which I prefer removing. To do so, I have a python script `copyfile.py`.
 ````sh
 def copy_file_excluding_comments(input_file, output_file):
@@ -246,18 +318,23 @@ def copy_file_excluding_comments(input_file, output_file):
             if not line.startswith('#'):
                 outfile.write(line)
 input_file = 'final.key'
-output_file = 'beta_glucose.prm' #change this line if you need a different filename (like for the BGM_OC)
+output_file = 'beta_glucose_test.prm' #change this line if you need a different filename (like for the BGM_OC)
 copy_file_excluding_comments(input_file, output_file)
 print(f"Contents of {input_file} have been copied to {output_file} excluding lines that start with #.")
 ````
 You can create this file in the folder that you downloaded for the `BGM` and `BGM_OC`. You can do so by using `cd` to go to that folder, then running the command `vi copyfile.py`, then pressing `I` to insert, and then pasting these lines. Hit `Esc`, then `:wq` to save this file. You can then run it in the same folder using the command `python copyfile.py`.
 
-Now I have a `beta_glucose.prm` file in the folder for the monomer that I will be using and adding to, to parameterize the dimer.
-The file should have first four lines that look something like this:
+Now I have a `beta_glucose_test.prm` file in the folder for the monomer that I will be using and adding to, to parameterize the dimer.
+This file should have the atom types described in the beginning which look something like this (only showing the first few lines):
 ````sh
-parameters /projects/welbornlab/Poltype2/master/ParameterFiles/amoebabio18_header.prm
-OPENMP-THREADS 102
-digits 8
-RESP-WEIGHT 1
+atom          500    500    C     "BGM                 "         6    12.011    4
+atom          501    501    O     "BGM                 "         8    15.999    2
+atom          502    502    C     "BGM                 "         6    12.011    4
+atom          503    503    O     "BGM                 "         8    15.999    2
+atom          504    504    C     "BGM                 "         6    12.011    4
 ````
-Remove these lines as they are not to be there in the prm file. You can also remove any literature references if you wish to, it makes copying easy later when we append this file to the `amoebabio18.prm` file. (We will talk about this later).
+Copy all the atom definitions, and add them to the list of atom definitions in the `amoebabio18.prm` file (after the atom types for amino acids, NAs, Ions etc, and before the `SOLUTE` parameters). 
+For the other parameters in the `beta_glucose_test.prm` file (torsion, SOLUTE, polarize, mutipole, bond, angle, strbend, vdw - the order that I have in my test file), simply add all those lines at the bottom of the `amoebabio18.prm` file. Save this file, and rename it to `beta_glucose_params.prm`.
+We will use this file to add new parameters, and run MD in Tinker.
+
+### Adding Parameters for the Linkage
