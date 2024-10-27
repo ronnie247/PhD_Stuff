@@ -264,11 +264,14 @@ My `final.xyz` file for the monomer looks like this:
 ````
 This is the format of a Tinker xyz file. Column 1 is the atom index, Column 2 is the atom name, Columns 3-5 are the x, y and z coordinates. Column 6 is the atom type, which we need, and the rest of the columns are connectivities. These are the atom indices of the atoms this one is connected to. Which means, atom 1 which is carbon of type 500, is connected to atoms 3, 12, 17 and 19.
 Draw the structure of the monomer on paper, that will help you assign the atom types.
+
 Check the bonding of the different atoms in the structure, and the xyz file, and find out which atom is assigned which number as the atom type.
+
 HINT - There is only one carbon that is bonded to two hydrogens (which will be equivalent, i.e. having the same atom type), and there is only one oxygen bonded to two carbons.
 This is what my monomer looks like:
 
-![monomer_types](https://github.com/user-attachments/assets/4da10682-98b3-4fc9-8bd7-e847f9d0ceae)
+![monomer_types](https://github.com/user-attachments/assets/aefe7f61-7e47-44a0-b372-46f948a8ebdc)
+
 
 TASK - Do the same for the functionalized monomer. For that molecule, my `final.xyz` file looks like this:
 ````sh
