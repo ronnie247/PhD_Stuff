@@ -268,8 +268,7 @@ Check the bonding of the different atoms in the structure, and the xyz file, and
 HINT - There is only one carbon that is bonded to two hydrogens (which will be equivalent, i.e. having the same atom type), and there is only one oxygen bonded to two carbons.
 This is what my monomer looks like:
 
-![monomer_types](https://github.com/user-attachments/assets/5d86e814-ff8d-480f-89e2-53214917f316)
-
+![monomer](https://github.com/user-attachments/assets/4c0c7188-8b56-494c-843b-d8edff136147)
 
 
 TASK - Do the same for the functionalized monomer. For that molecule, my `final.xyz` file looks like this:
@@ -311,7 +310,8 @@ TASK - Do the same for the functionalized monomer. For that molecule, my `final.
 
 ````
 and the atom types look like:
-![bgm_oc](https://github.com/user-attachments/assets/31409d4f-3261-4325-9b18-60b23f9e697d)
+![bgm_oc](https://github.com/user-attachments/assets/a46f4343-f058-459e-bacc-8606057dae88)
+
 
 ### Building a parameter file
 The file `final.key` contains the parameters for the regular and functionalized monomer. We need to copy them to a `.prm` file, which can be read by Tinker when we run and MD using the AMOEBA Force Field. But the `final.key` file also has a lot of comments, which start with a `#` symbol, which I prefer removing. To do so, I have a python script `copyfile.py`.
