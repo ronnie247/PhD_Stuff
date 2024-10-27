@@ -26,7 +26,8 @@ NOTE - Since we will use `.sdf` files as inputs to Poltype2, export another copy
 
 However, you see that the `OH` group on the `C1` is not how it occurs in the dimer. This oxygen atom in the dimer (and similarly a polymer, if need be) is connected to a carbon atom, and not a hydrogen.
 Since we would need to model the behaviour of that oxygen as it bonds to the next ring. Ideally, we would run poltype for a beta-glucose dimer, and get the parameters for the linkage from there. But, running poltype for the dimer requires too much time and memory to run correctly on ARC, so we improvise. We add a `CH3` group to the oxygen, and since that carbon is supposed to be tertiary, we add one `CH3` group on either side, to account for that environment. The molecule we end up parameterizing is this (check the functional group attached to the OH:
-![BGM_OC](https://github.com/user-attachments/assets/73a42e08-81f5-4194-b796-f9187b05b1b4)
+![bgm_oc](https://github.com/user-attachments/assets/8d04e930-14f5-40e4-9d70-686d3e4cca0c)
+
 
 Save it as a PDB and an SDF file. (Here I've named them `BGM_OC`, and will be referring to this molecule as the "functionalized monomer".)
 
