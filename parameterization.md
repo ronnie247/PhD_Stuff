@@ -276,7 +276,7 @@ This is what my monomer looks like:
 
 TASK - Do the same for the functionalized monomer. For that molecule, my `final.xyz` file looks like this:
 ````sh
-    33 xxx
+    33 
      1  C      3.479111    0.493625    0.128168      400    3    12    26    28
      2  O      1.396459    0.307329    1.196022      401    3    11
      3  C      2.090586   -0.088885    0.008697      402    1     2     5    29
