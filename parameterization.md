@@ -267,6 +267,7 @@ Draw the structure of the monomer on paper, that will help you assign the atom t
 Check the bonding of the different atoms in the structure, and the xyz file, and find out which atom is assigned which number as the atom type.
 HINT - There is only one carbon that is bonded to two hydrogens (which will be equivalent, i.e. having the same atom type), and there is only one oxygen bonded to two carbons.
 This is what my monomer looks like:
+
 ![monomer_types](https://github.com/user-attachments/assets/4da10682-98b3-4fc9-8bd7-e847f9d0ceae)
 
 TASK - Do the same for the functionalized monomer. For that molecule, my `final.xyz` file looks like this:
