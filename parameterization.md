@@ -270,7 +270,8 @@ Check the bonding of the different atoms in the structure, and the xyz file, and
 HINT - There is only one carbon that is bonded to two hydrogens (which will be equivalent, i.e. having the same atom type), and there is only one oxygen bonded to two carbons.
 This is what my monomer looks like:
 
-![monomer_types](https://github.com/user-attachments/assets/aefe7f61-7e47-44a0-b372-46f948a8ebdc)
+![monomer_types](https://github.com/user-attachments/assets/5d86e814-ff8d-480f-89e2-53214917f316)
+
 
 
 TASK - Do the same for the functionalized monomer. For that molecule, my `final.xyz` file looks like this:
