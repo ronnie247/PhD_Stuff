@@ -342,3 +342,14 @@ For the other parameters in the `beta_glucose_test.prm` file (torsion, SOLUTE, p
 We will use this file to add new parameters, and run MD in Tinker.
 
 ### Adding Parameters for the Linkage
+Save the pdb file for the dimer in a new folder, let's call it `BGD` and the file name for the dimer is `BGD.pdb`. Copy the `beta_glucose_params.prm` file to that folder as well.
+
+Now convert the pdb structure of the beta-glucose dimer to Tinker XYZ format. You can do that using Tinker's `pdbxyz` executable, with the input as `BGD.pdb` (the pdb file for the dimer), and the parameters as `beta_glucose_params.prm`. This will give you a `BGD.xyz` file, which will be the Tinker XYZ file for the dimer. Open the file in a text editor, and change the atom types of the atoms as per the atom types you have in the monomer.
+
+Note that the dimer will have `2*n-3` atoms, where `n` is the number of atoms in the monomer. In our case, we have assumed that atoms with atom types 509 (O), 515 (H) and 512 (H) leave as a water molecule, so the bridging oxygen will have the atom type of 503.
+
+(How do you know that is the assumption? - Because we wanted to parameterize what parameters the 503 oxygen will have, which is why we functionalized the glucose at that point.)
+
+Run Tinker `analyze`. We do that by running the command `~/path-to-tinker/analyze BGD.xyz M > analyze.log`. Change the path to Tinker as needed. Option M generates the principal moments, which we will also give us an idea of the net charge on the molecule (which will help us later - since here it has to be zero).
+
+Running this gives us an `analyze.log` file, which will probably read something like this:
