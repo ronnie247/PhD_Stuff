@@ -581,3 +581,13 @@ Now, after I run the `analyze` command again, my `analyze.log` file looks like t
 
  Tinker is Unable to Continue; Terminating the Current Calculation
 ````
+
+Now perform this for every one of the missing parameters. 
+
+NOTE: You can also look for the parameter line in the file we have for the functionalized monomer. Check to see the relevant parameter in the functionalized monomer has similar values for the one you have in the monomer. 
+
+ADDITIONAL NOTE: When you copy a line fromt the parameters for the functionalized monomer, make sure to change ALL atom types in that line to the one that is in your error.
+
+Once you're done with all the lines, your `analyze.log` file should look like this:
+````sh
+````
