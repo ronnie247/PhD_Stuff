@@ -371,9 +371,110 @@ Note that the dimer will have `2*n-3` atoms, where `n` is the number of atoms in
 
 My 'BGD.xyz` file looks like this:
 ````sh
-
+    45
+    50.000000   50.000000   50.000000   90.000000   90.000000   90.000000
+     1  C      6.152000   -3.680000   -2.161000   502     2     6    15    19
+     2  C      5.175000   -3.272000   -1.031000   504     1     3    11    35
+     3  C      5.551000   -3.985000    0.293000   506     2     4    17    20
+     4  C      6.963000   -3.513000    0.716000   508     3     5    18    21
+     5  C      7.978000   -3.809000   -0.430000   510     4    14    15    22
+     6  C      5.741000   -3.227000   -3.571000   500     1     7     9    16
+     7  H      4.760000   -3.638000   -3.812000   516     6
+     8  H      6.466000   -3.346000   -5.394000   517    16
+     9  H      5.684000   -2.134000   -3.593000   516     6
+    10  H      9.582000   -3.900000    0.729000   512    14
+    11  H      4.243000   -3.771000   -1.113000   519     2
+    12  H      4.514000   -2.840000    1.535000   514    17
+    13  H      7.404000   -5.128000    1.804000   513    18
+    14  O      9.278000   -3.406000   -0.038000   503     5    10
+    15  O      7.467000   -3.211000   -1.684000   501     1     5
+    16  O      6.711000   -3.663000   -4.521000   511     6     8
+    17  O      4.596000   -3.777000    1.326000   507     3    12
+    18  O      7.367000   -4.173000    1.915000   505     4    13
+    19  H      6.185000   -4.797000   -2.222000   518     1
+    20  H      5.548000   -5.089000    0.130000   520     3
+    21  H      6.954000   -2.425000    0.929000   521     4
+    22  H      7.994000   -4.904000   -0.616000   522     5
+    23  C      1.926000   -0.410000   -3.048000   502    24    28    36    41
+    24  C      1.009000   -0.072000   -1.850000   504    23    25    38    42
+    25  C      1.064000   -1.226000   -0.827000   506    24    26    39    43
+    26  C      2.502000   -1.540000   -0.373000   508    25    27    40    44
+    27  C      3.436000   -1.767000   -1.616000   510    26    35    36    45
+    28  C      1.793000    0.609000   -4.184000   500    23    30    31    37
+    29  H      2.537000    0.820000   -5.998000   517    37
+    30  H      2.069000    1.597000   -3.824000   516    28
+    31  H      0.767000    0.639000   -4.556000   516    28
+    32  H     -0.713000   -0.667000   -2.672000   515    38
+    33  H      0.588000   -0.123000    0.769000   514    39
+    34  H      2.114000   -3.457000    0.030000   513    40
+    35  O      4.699000   -2.226000   -1.146000   503     2    27
+    36  O      3.284000   -0.606000   -2.496000   501    23    27
+    37  O      2.643000    0.213000   -5.263000   511    28    29
+    38  O     -0.355000    0.115000   -2.242000   509    24    32
+    39  O      0.265000   -0.908000    0.315000   507    25    33
+    40  O      2.413000   -2.667000    0.487000   505    26    34
+    41  H      1.612000   -1.386000   -3.486000   518    23
+    42  H      1.348000    0.888000   -1.404000   519    24
+    43  H      0.636000   -2.139000   -1.312000   520    25
+    44  H      2.950000   -0.702000    0.199000   521    26
+    45  H      2.989000   -2.481000   -2.347000   522    27
 ````
 
 Run Tinker `analyze`. We do that by running the command `~/path-to-tinker/analyze BGD.xyz -k tinker.key M > analyze.log`. Change the path to Tinker as needed. Option M generates the principal moments, which we will also give us an idea of the net charge on the molecule (which will help us later - since here it has to be zero).
 
 Running this gives us an `analyze.log` file, which will probably read something like this:
+````sh
+
+     ######################################################################
+   ##########################################################################
+  ###                                                                      ###
+ ###            Tinker  ---  Software Tools for Molecular Design            ###
+ ##                                                                          ##
+ ##                       Version 8.10.1  October 2021                       ##
+ ##                                                                          ##
+ ##               Copyright (c)  Jay William Ponder  1990-2021               ##
+ ###                           All Rights Reserved                          ###
+  ###                                                                      ###
+   ##########################################################################
+     ######################################################################
+
+
+ Undefined Bond Stretching Parameters :
+
+ Type             Atom Names           Atom Classes
+
+ Bond            2-C      35-O           504  503
+
+ Undefined Angle Bending Parameters :
+
+ Type                  Atom Names                   Atom Classes
+
+ Angle           1-C       2-C      35-O           502  504  503
+ Angle           3-C       2-C      35-O           506  504  503
+ Angle          11-H       2-C      35-O           519  504  503
+ Angle           2-C      35-O      27-C           504  503  510
+
+ Undefined Torsional Parameters :
+
+ Type                        Atom Names                        Atom Classes
+
+ Torsion         6-C       1-C       2-C      35-O         500  502  504  503
+ Torsion        15-O       1-C       2-C      35-O         501  502  504  503
+ Torsion        19-H       1-C       2-C      35-O         518  502  504  503
+ Torsion        35-O       2-C       3-C       4-C         503  504  506  508
+ Torsion        35-O       2-C       3-C      17-O         503  504  506  507
+ Torsion        35-O       2-C       3-C      20-H         503  504  506  520
+ Torsion         1-C       2-C      35-O      27-C         502  504  503  510
+ Torsion         3-C       2-C      35-O      27-C         506  504  503  510
+ Torsion        11-H       2-C      35-O      27-C         519  504  503  510
+ Torsion        26-C      27-C      35-O       2-C         508  510  503  504
+ Torsion        36-O      27-C      35-O       2-C         501  510  503  504
+ Torsion        45-H      27-C      35-O       2-C         522  510  503  504
+
+ MECHANIC  --  Some Required Potential Energy Parameters are Undefined
+
+ Tinker is Unable to Continue; Terminating the Current Calculation
+
+````
+
+Notice how all the errors we see here, are because of undefined parameters around the linkage atom. Check to see if you're missing any other parameters - if you do, you might have made a mistake while assigning the atom types.
