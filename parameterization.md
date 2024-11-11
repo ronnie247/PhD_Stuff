@@ -680,7 +680,4 @@ multipole   404  408  413               0.16018
                                         0.00000   -0.30277
                                        -0.02986    0.00000    0.28811
 ````
-So we see that the carbon atoms connected to the bridging oxygen are supposed to have a charge ~0.01e. But for atom 510 we have ~0.15, which explains the ~0.1e missing charge. So we COPY the parameters for atom 504, and paste the parameters to the bottom of the `beta_glucose_params.prm` file (COPY, not CUT/REPLACE). We edit this new line to:
-````sh
-
-````
+So we see that the carbon atoms connected to the bridging oxygen are supposed to have a charge ~0.01e. But for atom 510 we have ~0.15, which explains the ~0.1e missing charge. Normally, if there were missing multipole parameters, we would copy the parameters from the monomer and append it to the end, but `Tinker/analyze` does not ask for any new parameters. (If that were the case, there would have been an error line saying "Missing Multipole parameters" or "Missing Multipole Parameters" along with the index of the atom for which multipole parameters are missing.)
