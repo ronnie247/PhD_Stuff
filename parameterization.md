@@ -590,4 +590,97 @@ ADDITIONAL NOTE: When you copy a line fromt the parameters for the functionalize
 
 Once you're done with all the lines, your `analyze.log` file should look like this:
 ````sh
+
+     ######################################################################
+   ##########################################################################
+  ###                                                                      ###
+ ###            Tinker  ---  Software Tools for Molecular Design            ###
+ ##                                                                          ##
+ ##                       Version 8.10.1  October 2021                       ##
+ ##                                                                          ##
+ ##               Copyright (c)  Jay William Ponder  1990-2021               ##
+ ###                           All Rights Reserved                          ###
+  ###                                                                      ###
+   ##########################################################################
+     ######################################################################
+
+
+ Total Electric Charge :                  0.11950 Electrons
+
+ Dipole Moment Magnitude :                  4.897 Debye
+
+ Dipole X,Y,Z-Components :                 -3.717        0.179       -3.183
+
+ Quadrupole Moment Tensor :               -27.520       -9.243       26.610
+      (Buckinghams)                        -9.243       25.035       -6.328
+                                           26.610       -6.328        2.485
+
+ Principal Axes Quadrupole :              -43.409       10.959       32.450
+
+ Radius of Gyration :                       3.847 Angstroms
+
+ Center of Mass Coordinates :            4.244217    -2.188986    -1.365000
+ Euler Angles (Phi/Theta/Psi) :           -29.673      -16.755      -73.823
+
+ Moments of Inertia and Principal Axes :
+
+             Moments (amu Ang^2)            X-, Y- and Z-Components of Axes
+
+                   1319.359              0.831981     0.378482     0.405659
+                   3458.028             -0.474028     0.105013     0.874225
+                   4487.027              0.288279    -0.919632     0.266780
+````
+
+Now we find out why we used the `analyze` function of Tinker. Finding out the missing parameters could also be achieved with the `minimize` function, but that wouldn't give us the total charge of the molecule. Here we see that the total charge on the dimer is `0.11950 Electrons`, whereas it should actually be zero. This is because of the multipole parameters, which contain the partial charge for the atom. These partial charges are added up to get the total charge of the system.
+
+Take for example the line:
+````sh
+multipole   500  511  502               0.03477
+                                        0.22616    0.00000    0.15847
+                                        0.00263
+                                        0.00000   -0.12909
+                                       -0.16273    0.00000    0.12646
+````
+Look at the first line. It tells us that these are the multipole parameters for atom of type 500, and the partial charge on this atom is `0.03477` (electrons). Right now, we will not discuss the rest of the numbers and how the dipole/multipole axes are chosen, but the only thing we will talk about is that the point for atom 500 is taken into account using atoms of types 511 and 502. Most commonly, these are atoms which are bonded to the atom 500.
+
+That tells us that there is one type of connection that hasn't been taken into account when the multipoles based on the electronic environment of that atom were calculated. We know that we created the bond (by adding the parameters) between atoms of type 504 and 503. Looking at the multipoles for those two atoms we find (and the other atom connected to that oxygen):
+````sh
+multipole   503  510  512              -0.35743
+                                        0.11505    0.00000    0.25337
+                                        0.13440
+                                        0.00000   -0.52984
+                                       -0.30603    0.00000    0.39544
+multipole   504  509  519               0.03073
+                                       -0.11875    0.00000    0.00335
+                                       -0.32144
+                                        0.00000    0.06846
+                                        0.19475    0.00000    0.25298
+multipole   510  501  503               0.15806
+                                        0.12817    0.00000    0.30494
+                                        0.01311
+                                        0.00000   -0.16794
+                                        0.03297    0.00000    0.15483
+````
+
+We see that the multipoles for atom 503 depends on 512, and that of 504 depends on 509. Looking at the equivalent parameters in the functionalized monomer, we see:
+````sh
+multipole   413  404  405              -0.43986
+                                        0.16851    0.00000    0.19264
+                                        0.02689
+                                        0.00000   -0.66297
+                                       -0.49595    0.00000    0.63608
+multipole   405  413  419               0.00122
+                                       -0.02026    0.00000    0.36625
+                                       -0.19893
+                                        0.00000   -0.02011
+                                        0.07995    0.00000    0.21904
+multipole   404  408  413               0.16018
+                                        0.26937    0.00000    0.18525
+                                        0.01466
+                                        0.00000   -0.30277
+                                       -0.02986    0.00000    0.28811
+````
+So we see that the carbon atoms connected to the bridging oxygen are supposed to have a charge ~0.01e. But for atom 510 we have ~0.15, which explains the ~0.1e missing charge. So we COPY the parameters for atom 504, and paste the parameters to the bottom of the `beta_glucose_params.prm` file (COPY, not CUT/REPLACE). We edit this new line to:
+````sh
+
 ````
