@@ -481,7 +481,7 @@ Notice how all the errors we see here, are because of undefined parameters aroun
 
 The goal here is to look at each of the missing parameters, and try to find it soemwhere in either the parameters of the monomer, or the functionalized monomer. We will not go through all of them here, but I will show you one example of each.
 
-Starting with the ` Bond            2-C      35-O           504  503` parameter. This line means that the parameter for the bond between atom of type 504 and atom of type 503 is missing. Looking at the structure of the monomer, this bond should be the same as the bond between atom of type 504 and atom of type 509. So we locate the line `bond   504   509   204.1189   1.4263` from `beta_glucose_test.prm` and copy-paste this line to `beta_glucose_params.prm`. But we need to edit this line, so that it applies to the bond in question. So the new line becomes `bond   504   503   204.1189   1.4263`. Save this new version of the `beta_glucose_params.prm` file, and run `~/path-to-tinker/analyze BGD.xyz -k tinker.key M > analyze.log` again. Now you will see the `analyze.log` file no longer has the missing parameter, and looks like this:
+Starting with the ` Bond            2-C      35-O           504  503` parameter. This line means that the parameter for the bond between atom of type 504 and atom of type 503 is missing. Looking at the structure of the monomer, this bond should be the same as the bond between atom of type 504 and atom of type 509. So we locate the line `bond   504   509   204.1189   1.4263` from `beta_glucose_test.prm` and copy-paste this line at the bottom of the file `beta_glucose_params.prm`. But we need to edit this line, so that it applies to the bond in question. So the new line becomes `bond   504   503   204.1189   1.4263`. Save this new version of the `beta_glucose_params.prm` file, and run `~/path-to-tinker/analyze BGD.xyz -k tinker.key M > analyze.log` again. Now you will see the `analyze.log` file no longer has the missing parameter, and looks like this:
 ````sh
 
      ######################################################################
@@ -535,6 +535,8 @@ For `Angle           1-C       2-C      35-O           502  504  503`, I use the
 
 For `Torsion         6-C       1-C       2-C      35-O         500  502  504  503`, I use the line `torsion 500 502 504 509 0.854 0.0 1 -0.374 180.0 2 0.108 0.0 3` and change it to `torsion 500 502 504 503 0.854 0.0 1 -0.374 180.0 2 0.108 0.0 3`.
 
+NOTE: Make sure to COPY the old line and PASTE it at the BOTTOM of the `beta_glucose_params.prm` file. DO NOT EDIT THE PARAMETERS IN THEIR ORIGINAL LOCATION. Pasting it at the bottom allows you to quickly find the new/added parameters, should a different error arise.
+
 Now, after I run the `analyze` command again, my `analyze.log` file looks like this:
 ````sh
 
@@ -586,7 +588,7 @@ Now perform this for every one of the missing parameters.
 
 NOTE: You can also look for the parameter line in the file we have for the functionalized monomer. Check to see the relevant parameter in the functionalized monomer has similar values for the one you have in the monomer. 
 
-ADDITIONAL NOTE: When you copy a line fromt the parameters for the functionalized monomer, make sure to change ALL atom types in that line to the one that is in your error.
+ADDITIONAL NOTE: When you copy a line from the parameters for the functionalized monomer, make sure to change ALL atom types in that line to the one that is in your error.
 
 Once you're done with all the lines, your `analyze.log` file should look like this:
 ````sh
@@ -680,4 +682,73 @@ multipole   404  408  413               0.16018
                                         0.00000   -0.30277
                                        -0.02986    0.00000    0.28811
 ````
-So we see that the carbon atoms connected to the bridging oxygen are supposed to have a charge ~0.01e. But for atom 510 we have ~0.15, which explains the ~0.1e missing charge. Normally, if there were missing multipole parameters, we would copy the parameters from the monomer and append it to the end, but `Tinker/analyze` does not ask for any new parameters. (If that were the case, there would have been an error line saying "Missing Multipole parameters" or "Missing Multipole Parameters" along with the index of the atom for which multipole parameters are missing.)
+So we see that we do not have any parameters for the bridging oxygen when it is connected to two carbons (like the `multipole   413  404  405` line). To remedy that, we copy that line, and append it to the bottom of the `beta_glucose_params.prm` file, and we will edit the partial charge to be:
+````sh
+multipole   503  510  504              -0.11950
+                                        0.16851    0.00000    0.19264
+                                        0.02689
+                                        0.00000   -0.66297
+                                       -0.49595    0.00000    0.63608
+````
+
+Note that the partial charge here balances out the extra charge that we saw in the analyze file. Run `Tinker/analyze` again, and now we can see that the charge has been balanced and is zero. The new `analyze.log` file looks like this:
+````sh
+
+     ######################################################################
+   ##########################################################################
+  ###                                                                      ###
+ ###            Tinker  ---  Software Tools for Molecular Design            ###
+ ##                                                                          ##
+ ##                       Version 8.10.1  October 2021                       ##
+ ##                                                                          ##
+ ##               Copyright (c)  Jay William Ponder  1990-2021               ##
+ ###                           All Rights Reserved                          ###
+  ###                                                                      ###
+   ##########################################################################
+     ######################################################################
+
+
+ Total Electric Charge :                 -0.00000 Electrons
+
+ Dipole Moment Magnitude :                  6.057 Debye
+
+ Dipole X,Y,Z-Components :                 -4.931        0.687       -3.449
+
+ Quadrupole Moment Tensor :               -28.384       -7.732       26.213
+      (Buckinghams)                        -7.732       25.927       -6.097
+                                           26.213       -6.097        2.457
+
+ Principal Axes Quadrupole :              -43.575       11.691       31.884
+
+ Radius of Gyration :                       3.847 Angstroms
+
+ Center of Mass Coordinates :            4.244217    -2.188986    -1.365000
+ Euler Angles (Phi/Theta/Psi) :           -29.673      -16.755      -73.823
+
+ Moments of Inertia and Principal Axes :
+
+             Moments (amu Ang^2)            X-, Y- and Z-Components of Axes
+
+                   1319.359              0.831981     0.378482     0.405659
+                   3458.028             -0.474028     0.105013     0.874225
+                   4487.027              0.288279    -0.919632     0.266780
+````
+
+TASK - Make a trimer, convert to Tinker XYZ, and edit the atom types. Run `Tinker/analyze` for the trimer without the added multipole line. You should see a charge of `0.23900 Electrons`, which is double the charge we saw for the dimer. Adding the new multipole parameter for atom type 503 (the same thing we just added), will bring the total charge to zero. You can confirm this by using this latest version of the `beta_glucose_params.prm` file for a polymer of any `n` number of beta-glucose monomers, and the charge should still come out to be zero.
+
+### Running Minimization and Dynamics
+
+Now that you have a parameter file, you can run `Tinker/minimize` and `Tinker/dynamic` on the molecule (or you can solvate it first) by following the steps [here](https://github.com/WelbornGroup/Documentation/blob/master/RunningTinkerBasics.md).
+
+## Parameterizing Polymers
+You should be able to parameterize any polymer you want. The steps to follow are:
+
+1. Run poltype on the monomers, and cap the ends like we did with the functionalization. The caps should reflect the type of bonding in the polymer.
+
+2. Make the polymer step by step, and parameterize ONE linkage at a time. So if your monomers are X,Y and Z and the sequence for the polymer is XYZYZX then make the molecules in this order: X, then XY, then XYZ, then XYZY then XYZYZ and finally XYZYZX.
+
+3. At each step, make sure the missing parameters are added, and that the charge adds up to the total charge of the polymer at that step.
+
+4. Run a 1ns MD for each step of the polymer, so that you know the MD runs without any issues.
+
+Happy Parameterizing!
