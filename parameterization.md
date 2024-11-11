@@ -478,3 +478,106 @@ Running this gives us an `analyze.log` file, which will probably read something 
 ````
 
 Notice how all the errors we see here, are because of undefined parameters around the linkage atom. Check to see if you're missing any other parameters - if you do, you might have made a mistake while assigning the atom types.
+
+The goal here is to look at each of the missing parameters, and try to find it soemwhere in either the parameters of the monomer, or the functionalized monomer. We will not go through all of them here, but I will show you one example of each.
+
+Starting with the ` Bond            2-C      35-O           504  503` parameter. This line means that the parameter for the bond between atom of type 504 and atom of type 503 is missing. Looking at the structure of the monomer, this bond should be the same as the bond between atom of type 504 and atom of type 509. So we locate the line `bond   504   509   204.1189   1.4263` from `beta_glucose_test.prm` and copy-paste this line to `beta_glucose_params.prm`. But we need to edit this line, so that it applies to the bond in question. So the new line becomes `bond   504   503   204.1189   1.4263`. Save this new version of the `beta_glucose_params.prm` file, and run `~/path-to-tinker/analyze BGD.xyz -k tinker.key M > analyze.log` again. Now you will see the `analyze.log` file no longer has the missing parameter, and looks like this:
+````sh
+
+     ######################################################################
+   ##########################################################################
+  ###                                                                      ###
+ ###            Tinker  ---  Software Tools for Molecular Design            ###
+ ##                                                                          ##
+ ##                       Version 8.10.1  October 2021                       ##
+ ##                                                                          ##
+ ##               Copyright (c)  Jay William Ponder  1990-2021               ##
+ ###                           All Rights Reserved                          ###
+  ###                                                                      ###
+   ##########################################################################
+     ######################################################################
+
+
+ Undefined Angle Bending Parameters :
+
+ Type                  Atom Names                   Atom Classes
+
+ Angle           1-C       2-C      35-O           502  504  503
+ Angle           3-C       2-C      35-O           506  504  503
+ Angle          11-H       2-C      35-O           519  504  503
+ Angle           2-C      35-O      27-C           504  503  510
+
+ Undefined Torsional Parameters :
+
+ Type                        Atom Names                        Atom Classes
+
+ Torsion         6-C       1-C       2-C      35-O         500  502  504  503
+ Torsion        15-O       1-C       2-C      35-O         501  502  504  503
+ Torsion        19-H       1-C       2-C      35-O         518  502  504  503
+ Torsion        35-O       2-C       3-C       4-C         503  504  506  508
+ Torsion        35-O       2-C       3-C      17-O         503  504  506  507
+ Torsion        35-O       2-C       3-C      20-H         503  504  506  520
+ Torsion         1-C       2-C      35-O      27-C         502  504  503  510
+ Torsion         3-C       2-C      35-O      27-C         506  504  503  510
+ Torsion        11-H       2-C      35-O      27-C         519  504  503  510
+ Torsion        26-C      27-C      35-O       2-C         508  510  503  504
+ Torsion        36-O      27-C      35-O       2-C         501  510  503  504
+ Torsion        45-H      27-C      35-O       2-C         522  510  503  504
+
+ MECHANIC  --  Some Required Potential Energy Parameters are Undefined
+
+ Tinker is Unable to Continue; Terminating the Current Calculation
+````
+
+Now you get the picture. We need to do the same for each line that shows up as an error. For angle where the missing parameter is for `A  B  C` we either try to find the relevant `A  B  C` line, or `C  B  A` line (same with torsions, for `ABCD`, we need `ABCD` or `DCBA`) any other option will not be for the relevant angle/torsion.
+
+For `Angle           1-C       2-C      35-O           502  504  503`, I use the line `angle   502   504   509   91.7411   108.7595` and change it to `angle   502   504   503   91.7411   108.7595`.
+
+For `Torsion         6-C       1-C       2-C      35-O         500  502  504  503`, I use the line `torsion 500 502 504 509 0.854 0.0 1 -0.374 180.0 2 0.108 0.0 3` and change it to `torsion 500 502 504 503 0.854 0.0 1 -0.374 180.0 2 0.108 0.0 3`.
+
+Now, after I run the `analyze` command again, my `analyze.log` file looks like this:
+````sh
+
+     ######################################################################
+   ##########################################################################
+  ###                                                                      ###
+ ###            Tinker  ---  Software Tools for Molecular Design            ###
+ ##                                                                          ##
+ ##                       Version 8.10.1  October 2021                       ##
+ ##                                                                          ##
+ ##               Copyright (c)  Jay William Ponder  1990-2021               ##
+ ###                           All Rights Reserved                          ###
+  ###                                                                      ###
+   ##########################################################################
+     ######################################################################
+
+
+ Undefined Angle Bending Parameters :
+
+ Type                  Atom Names                   Atom Classes
+
+ Angle           3-C       2-C      35-O           506  504  503
+ Angle          11-H       2-C      35-O           519  504  503
+ Angle           2-C      35-O      27-C           504  503  510
+
+ Undefined Torsional Parameters :
+
+ Type                        Atom Names                        Atom Classes
+
+ Torsion         6-C       1-C       2-C      35-O         500  502  504  503
+ Torsion        15-O       1-C       2-C      35-O         501  502  504  503
+ Torsion        19-H       1-C       2-C      35-O         518  502  504  503
+ Torsion        35-O       2-C       3-C       4-C         503  504  506  508
+ Torsion        35-O       2-C       3-C      17-O         503  504  506  507
+ Torsion        35-O       2-C       3-C      20-H         503  504  506  520
+ Torsion         1-C       2-C      35-O      27-C         502  504  503  510
+ Torsion         3-C       2-C      35-O      27-C         506  504  503  510
+ Torsion        11-H       2-C      35-O      27-C         519  504  503  510
+ Torsion        26-C      27-C      35-O       2-C         508  510  503  504
+ Torsion        36-O      27-C      35-O       2-C         501  510  503  504
+ Torsion        45-H      27-C      35-O       2-C         522  510  503  504
+
+ MECHANIC  --  Some Required Potential Energy Parameters are Undefined
+
+ Tinker is Unable to Continue; Terminating the Current Calculation
+````
