@@ -17,32 +17,27 @@ To run a tinker molecular dynamics simulation you will always need the following
 
 First lets create a Tinker key file, you can name this `tinker.key` or my preference is to name it `filename.key` where filename matches my .xyz and .prm file names 
 
-The following is a basic key file with our normal settings for a protein system:
+The following is a basic key file with our normal settings for a polymer system (example parameters from the beta-glucose params, change filename as required):
 
-```sh
-parameters amoebabio18.prm 
+````sh
+parameters beta_glucose_params.prm
 
-integrator nose-hoover
+a-axis 50.00 
+b-axis 50.00
+c-axis 50.00
 
-a-axis 80.00 
-b-axis 80.00
-c-axis 80.00
-
-neighbor-list
-polar-eps 0.00001
-vdw-cutoff 12.0
-vdw-correction
-
+integrator verlet
+thermostat bussi
+barostat montecarlo
+polar-eps 0.000010
+vdw-cutoff 10.0
 ewald
-ewald-cutoff 7.0
-
+neighbor-list
 polar-predict
 polarization mutual
+````
 
-verbose
-```
-
-You will need to edit (i) the path the the parameter file if it is not in the directory with the key file, you can get rid of this parameter line in your keyfile if you name your .prm file the same as your .xyz and .key (ii) the size of the box since it will change per system and (iii) the integrator line if you are not performing a simulation in the NPT ensemble. In this case the integrator is velocity verlet, the thermostat and barostat are coupled nose-hoover. The rest of the keywords are transferable to most simulations we will run. Look into them to discover what they mean.
+You will need to edit (i) the path the the parameter file if it is not in the directory with the key file, you can get rid of this parameter line in your keyfile if you name your .prm file the same as your .xyz and .key (ii) the size of the box since it will change per system and (iii) the integrator line if you are not performing a simulation in the NPT ensemble. In this case the integrator is velocity verlet, the thermostat and barostat are bussi and montecarlo respectively (you can also use coupled nose-hoover). The rest of the keywords are transferable to most simulations we will run. Look into them to discover what they mean.
 
 We should have all of our files in a directory now, except for the bash submission scripts. 
 
@@ -83,6 +78,7 @@ tinker9 minimize filename.xyz_2 0.1 > min.log
 
 echo "------- tinker9 minimization has exited: `date` --------"
 ```
+NOTE - If you're using `#SBATCH --partition=v100_dev_q`, then the module to be loaded will be `module load infer-skylake/tinker9/1.4.0-nvhpc-21.11`.
 
 Run this script by opening a terminal on Infer, the GPU, and typing `sbatch launch_minimize.sh`
 
