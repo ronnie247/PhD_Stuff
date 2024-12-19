@@ -1,4 +1,4 @@
-# Solvate a polymer from PDB
+# Solvate a polymer from TinkerXYZ
 
 This assumes that you have a TinkerXYZ file for your polymer. If you don't, export the structure from PyMOL as a PDB, and then use Tinker's `pdbxyz` executable to convert it to TinkerXYZ file format. (You need to have a `.key` file for that, which can be the same as that mentioned in [parameterization-for-amoeba.md](./parameterization-for-amoeba.md) - you'll have to change the box size (mentioned below.
 
