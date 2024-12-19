@@ -8,6 +8,6 @@ All steps are optional, and will depend of the system you're working on and the 
 
 1. Parameterize the monomers with Poltype2 to be used for Tinker MD simulation with AMOEBA Force Field. [parameterization-for-amoeba.md](./parameterization-for-amoeba.md)
 2. Create the polymer input structure. create-polymer-with-pymol.md
-3. Solvate the polymer and add ions. [SolvatePolymer.md](./solvate-polymer.md)
-4. Basics of running Tinker MD. [RunningTinkerBasics.md](./running-tinker-basics.md)
+3. Solvate the polymer and add ions. [solvate-polymer.md](./solvate-polymer.md)
+4. Basics of running Tinker MD. [running-tinker-basics.md](./running-tinker-basics.md)
 5. Trajectory analysis and helpful tools. (Under Development)
