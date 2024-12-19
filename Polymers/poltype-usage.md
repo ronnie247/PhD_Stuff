@@ -1,5 +1,5 @@
 # This is a Quick Guide to using Poltype2
-(Please see the Poltype2 [install guide](./Poltype_Install.md) first to get it set up)
+(Please see the Poltype2 [install guide](./poltype-install.md) first to get it set up)
 
 To utilize this software you will require 4 input files:
 
@@ -19,7 +19,7 @@ Poltype requires a `.mol` or `.sdf` structure file.
 
 Here is a basic example for the `poltype.ini` file:
 
-```
+```sh
 structure=monomer1.mol
 atmidx=400
 dontfrag=True
@@ -33,7 +33,7 @@ In this example the structure file is named, the starting atom index for the res
 
 The `paths.sh` should contain the following: 
 
-```
+```sh
 export PATH=/projects/welbornlab/Poltype2/TinkerEx/:$PATH
 export GDMADIR=/projects/welbornlab/Poltype2/bin/
 export PATH=/projects/welbornlab/Poltype2/bin/:$PATH
@@ -47,7 +47,7 @@ The only change will be the fourth line, where the path should reflect the locat
 
 The `run-poltype.sh` is a bash script to submit the poltype job to the queue on ARC. The only changes should be made to the header for example if you want to submit to another CPU queue or request more time/resources
 
-```
+```sh
 #!/bin/bash
 #SBATCH -J Poltype2
 #SBATCH -A welbornlab
@@ -75,8 +75,6 @@ Make a new directory on ARC (`mkdir Polymer`)
 Copy the four input files to this directory (`cp poltype.ini Polymer`)
 
 Move into the directory (`cd Polymer`) and submit the job to the queue (`sbatch run-poltype.sh`)
-
-
 
 A successful poltype run will result in an OPEN_ME directory, the minimized structure (`final.xyz`), and the parameters (`final.key`)
 
