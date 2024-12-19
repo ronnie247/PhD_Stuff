@@ -15,7 +15,7 @@ To run a tinker molecular dynamics simulation you will always need the following
 
 
 
-First lets create a Tinker key file, you can name this `tinker.key` or my preference is to name it `filename.key` where filename matches my .xyz and .prm file names 
+First lets create a Tinker key file, you can name this `tinker.key` or my preference is to name it `filename.key` where filename matches my .xyz and .prm file names.
 
 The following is a basic key file with our normal settings for a polymer system (example parameters from the beta-glucose params, change filename as required):
 
@@ -37,7 +37,7 @@ polar-predict
 polarization mutual
 ````
 
-You will need to edit (i) the path the the parameter file if it is not in the directory with the key file, you can get rid of this parameter line in your keyfile if you name your .prm file the same as your .xyz and .key (ii) the size of the box since it will change per system and (iii) the integrator line if you are not performing a simulation in the NPT ensemble. In this case the integrator is velocity verlet, the thermostat and barostat are bussi and montecarlo respectively (you can also use coupled nose-hoover). The rest of the keywords are transferable to most simulations we will run. Look into them to discover what they mean.
+You will need to edit (i) the path the the parameter file if it is not in the directory with the key file, you can get rid of this parameter line in your keyfile if you name your .prm file the same as your .xyz and .key (ii) the size of the box since it will change per system and (iii) the integrator line if you are not performing a simulation in the NPT ensemble. In this case the integrator is velocity verlet, the thermostat and barostat are bussi and montecarlo respectively (you can also use coupled nose-hoover). The rest of the keywords are transferable to most simulations we will run. 
 
 We should have all of our files in a directory now, except for the bash submission scripts. 
 
@@ -46,7 +46,6 @@ We should have all of our files in a directory now, except for the bash submissi
 We want to make sure our system is centered
 
 `/Tinker/xyzedit Final_input.xyz`
-
 
 Choose option #12 `(12) Translate Center of Mass to the Origin` and type enter to exit. You will find a new file `filename.xyz_2` that contains the centered system. 
 
@@ -80,7 +79,7 @@ echo "------- tinker9 minimization has exited: `date` --------"
 ```
 NOTE - If you're using `#SBATCH --partition=v100_dev_q`, then the module to be loaded will be `module load infer-skylake/tinker9/1.4.0-nvhpc-21.11`.
 
-Run this script by opening a terminal on Infer, the GPU, and typing `sbatch launch_minimize.sh`
+Run this script by opening a terminal on Infer, the GPU, and typing `sbatch launch_minimize.sh`.
 
 In addition to the output file `min.log`, output system coordinates will be saved as `Final_input.xyz_3`. It is good practice to center the system before any simulation, so do it again before running the molecular dynamics:
 `~/Tinker/xyzedit filename.xyz_3`, which will create a new file `filename.xyz_4`.
