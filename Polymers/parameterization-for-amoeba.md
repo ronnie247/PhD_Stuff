@@ -28,10 +28,10 @@ However, you see that the `OH` group on the `C1` is not how it occurs in the dim
 Since we would need to model the behaviour of that oxygen as it bonds to the next ring. Ideally, we would run poltype for a beta-glucose dimer, and get the parameters for the linkage from there. But, running poltype for the dimer requires too much time and memory to run correctly on ARC, so we improvise. We add a `CH3` group to the oxygen, and since that carbon is supposed to be tertiary, we add one `CH3` group on either side, to account for that environment. The molecule we end up parameterizing is this (check the functional group attached to the OH:
 ![bgm_oc](https://github.com/user-attachments/assets/8d04e930-14f5-40e4-9d70-686d3e4cca0c)
 
-
 Save it as a PDB and an SDF file. (Here I've named them `BGM_OC`, and will be referring to this molecule as the "functionalized monomer".)
 
 NOTE - Also make the beta-glucose dimer, and save it as a PDB file. We will use it later, when we check out parameters.
+To know how to make dimers and polymers, see this [short tutorial] (./create-polymer-with-pymol.md).
 
 ### Structure input files
 So far, we have the following SDF files we will use as inputs:
