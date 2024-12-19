@@ -109,4 +109,4 @@ echo "------- tinker9 has exited: `date` --------"
 
 This will launch a 30,000,000 step simulation of 1 fs timestep, saving frames every 10 ps in the ensemble 4 (NPT) with temperature 300 K and pressure 1 atm. 
 
-Run this script by opening a terminal on Infer, the GPU, and typing `sbatch launch_dynamic.sh`
+Run this script by opening a terminal on Infer, the GPU, and typing `sbatch launch_dynamic.sh`.
