@@ -17,7 +17,7 @@ The first step is to make a beta-blucose monomer and paramterizing it with Polty
 
 ** HINT - You can use the 6-membered ring to start with, that way, you can get the hexagonal ring in one go. **
 
-NOTE - If you think the bonda/angles does not look the way they is supposed to look, click the `Sculpt` button on the builder window to get an approximation of the lowest energy structure.
+NOTE - If you think the bonds/angles does not look the way they are supposed to look, click the `Sculpt` button on the builder window to get an approximation of the lowest energy structure.
 The beta-glucose monomer looks like this:
 ![monbuilder](https://github.com/user-attachments/assets/adc46ff0-94bc-482e-aef0-9cbd6ca0741a)
 Once you're satisfied with the structure, Go to `File` -> `Export` and export it as a PDB.
