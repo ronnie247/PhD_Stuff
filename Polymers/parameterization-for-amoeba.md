@@ -3,7 +3,7 @@
 #### Poltype2
 For the parameterization, we will be using the Poltype2.
 
-To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
+To install and use Poltype2 - follow these links: [Poltype Installation Guide](./Poltype_Install.md) and [Poltype Usage](./Poltype_Usage.md)
 
 ## Tutorial
 Here we will parameterize a beta-blucose dimer, to be able to parameterize a polymer with beta-glucose subunits. It looks like this:
@@ -177,7 +177,7 @@ $$$$
 ### Poltype input files
 Now we move on to using Poltype.
 
-REMINDER - To install and use Poltype2 - follow these links: [Poltype Installation Guide](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Install.md) and [Poltype Usage](https://github.com/WelbornGroup/Documentation/blob/Workflow_update/Poltype_Usage.md)
+REMINDER - To install and use Poltype2 - follow these links: [Poltype Installation Guide](./Poltype_Install.md) and [Poltype Usage](./Poltype_Usage.md)
 
 From the Usage guidelines, we know that we need three more files other than the input sdf file. To parameterize the `BGM_OC.sdf` structure, I have the following three input files:
 
@@ -342,7 +342,7 @@ For the other parameters in the `beta_glucose_test.prm` file (torsion, SOLUTE, p
 We will use this file to add new parameters, and run MD in Tinker.
 
 ### Adding Parameters for the Linkage
-Save the pdb file for the dimer in a new folder, let's call it `BGD` and the file name for the dimer is `BGD.pdb`. Copy the `beta_glucose_params.prm` file to that folder as well. You'll need another file to run Tinker commands, called `tinker.key` which will let Tinker know about the parameter file and general system information. You can learn more about running Tinker commands [here](https://github.com/WelbornGroup/Documentation/blob/master/RunningTinkerBasics.md). For now, my `tinker.key` file looks like this:
+Save the pdb file for the dimer in a new folder, let's call it `BGD` and the file name for the dimer is `BGD.pdb`. Copy the `beta_glucose_params.prm` file to that folder as well. You'll need another file to run Tinker commands, called `tinker.key` which will let Tinker know about the parameter file and general system information. You can learn more about running Tinker commands [here](./RunningTinkerBasics.md). For now, my `tinker.key` file looks like this:
 ````sh
 parameters beta_glucose_params.prm
 
@@ -738,7 +738,7 @@ TASK - Make a trimer, convert to Tinker XYZ, and edit the atom types. Run `Tinke
 
 ### Running Minimization and Dynamics
 
-Now that you have a parameter file, you can run `Tinker/minimize` and `Tinker/dynamic` on the molecule (or you can solvate it first) by following the steps [here](https://github.com/WelbornGroup/Documentation/blob/master/RunningTinkerBasics.md).
+Now that you have a parameter file, you can run `Tinker/minimize` and `Tinker/dynamic` on the molecule (or you can solvate it first) by following the steps [here](./RunningTinkerBasics.md).
 
 ## Parameterizing Polymers
 You should be able to parameterize any polymer you want. The steps to follow are:
