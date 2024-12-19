@@ -15,6 +15,7 @@ Once you're satisfied with the structure, Go to `File` -> `Export` and export it
 
 Now you have the structure of the monomer. To make a dimer out of this, copy the monomer to a new object, and name it glucose (or anything else you want).
 ![copyobj](https://github.com/user-attachments/assets/78f4fe45-b538-4608-a3f6-66032f779c2b)
+
 ![objname](https://github.com/user-attachments/assets/c6670671-d845-4a00-97ac-bd2308cfe885)
 
 For heteropolymers, it will be worthwhile to create objects for each kind of monomer, so that you can grab them as and when needed.
@@ -26,9 +27,11 @@ The distance we make in this input file should be as close to the real values as
 Although if you feel you cannot do so, just create the bond as shown in the next step, and minimize the molecule later.
 
 Now we will drag the second monomer to the position we want. To know the drag buttons and other mouse modes, check the bottom right corner of the window (3-Button Editing) and click the arrow next to it.
+
 ![buttons](https://github.com/user-attachments/assets/5bdafb35-fade-4671-aaec-b1e399551a6e)
 
 Our system now looks like this.
+
 ![two-mer](https://github.com/user-attachments/assets/dc416fe5-a977-42c4-b468-da43780bc012)
 
 
