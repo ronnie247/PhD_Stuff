@@ -34,7 +34,9 @@ Our system now looks like this.
 
 ![two-mer](https://github.com/user-attachments/assets/dc416fe5-a977-42c4-b468-da43780bc012)
 
+Now copy the glucose object to obj01 (which you can rename to pol_progress or something like that if you want).
 
+![copytoold](https://github.com/user-attachments/assets/766b2f96-06c4-4a4b-8035-49a3d9933e01)
 
 NOTE - The order of the atoms in a PDB (or XYZ) file will be the same order you use to add atoms to a structure. 
 That is why, we prefer making a monomer, and then making multiple copies of it, adding them to the structure one at a time.
