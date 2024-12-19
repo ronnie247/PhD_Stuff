@@ -22,7 +22,7 @@ Make a file named `water.xyz` in your directory with your polymer file and amoeb
      3  H      0.670683    0.443372    0.453400   350     1
 ```
 
-We will use this single water to populate our waterbox with many waters. First we need to calculate the number of waters to add for a specific volume based on the density of water `1000 kg/m^3`. An example of this calculation is done on page 21 of this [tinker tutorial](https://tinker-hp.org/wp-content/uploads/2022/10/Tinker_preparation_tutorial.pdf).
+We will use this single water to populate our waterbox with many waters. First we need to calculate the number of waters to add for a specific volume based on the density of water `1000 kg/m^3`. An example of this calculation is done on page 21 of this [Tinker tutorial](https://tinker-hp.org/wp-content/uploads/2022/10/Tinker_preparation_tutorial.pdf).
 
 Let's assume for our `50x50x50` box we will need `11,000` water molecules ***you need to change this number to what you calculate***. 
 
