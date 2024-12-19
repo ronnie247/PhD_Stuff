@@ -37,7 +37,7 @@ The `paths.sh` should contain the following:
 export PATH=/projects/welbornlab/Poltype2/TinkerEx/:$PATH
 export GDMADIR=/projects/welbornlab/Poltype2/bin/
 export PATH=/projects/welbornlab/Poltype2/bin/:$PATH
-export PATH=/home/lnewman2/anaconda3/envs/xtbenv/bin/:$PATH
+export PATH=/home/mondal/anaconda3/envs/xtbenv/bin/:$PATH
 export PSI_SCRATCH=/localscratch/
 ```
 
