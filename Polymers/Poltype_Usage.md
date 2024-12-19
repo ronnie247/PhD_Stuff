@@ -20,7 +20,7 @@ Poltype requires a `.mol` or `.sdf` structure file.
 Here is a basic example for the `poltype.ini` file:
 
 ```
-structure=galactose.mol
+structure=monomer1.mol
 atmidx=400
 dontfrag=True
 ```
