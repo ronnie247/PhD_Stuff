@@ -70,11 +70,11 @@ echo "------- Poltype2 has exited: `date` --------"
 
 ### Running Poltype
 
-Make a new directory on ARC (`mkdir GAL_Poltype`) 
+Make a new directory on ARC (`mkdir Polymer`) 
 
-Copy the four input files to this directory (`cp poltype.ini GAL_Poltype`)
+Copy the four input files to this directory (`cp poltype.ini Polymer`)
 
-Move into the directory (`cd GAL_Poltype`) and submit the job to the queue (`sbatch run-poltype.sh`)
+Move into the directory (`cd Polymer`) and submit the job to the queue (`sbatch run-poltype.sh`)
 
 
 
