@@ -1,4 +1,4 @@
-# Steps to follow to parameterize a polymer.
+# How to parameterize a Polymer for AMOEBA using Poltype2.
 
 #### Poltype2
 For the parameterization, we will be using the Poltype2.
