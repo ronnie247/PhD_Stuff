@@ -67,7 +67,7 @@ You should download and open this file in VMD to make sure it looks okay with no
 
 Use Tinker `analyze` on the new file (`polymer_filename.xyz_2`) to confirm the charge on the system.
 
-Based on the charge of the system, you'll have to add positive or negative counterions in the system. You might also need some concentration of salts on a case-to-case basis, each ion species will have to be added based on the following steps. Make sure to do that calculation for number of ions of each species BEFORE you do any of the steps mentioned below.
+Based on the charge of the system, you'll have to add positive or negative counterions in the system. You might also need some concentration of salts on a case-to-case basis, each ion species will have to be added based on the following steps. ***Make sure to do that calculation for number of ions of each species BEFORE you do any of the steps mentioned below.***
 
 To add ions `/Tinker/xyzedit polymer_filename.xyz_2` then `(26) Place Monoatomic Ions around a Solute`.
 
