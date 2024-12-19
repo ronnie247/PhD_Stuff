@@ -42,9 +42,14 @@ Now use the builder window (shown here) to delete one of the oxygen atoms (I've 
 
 ![builder](https://github.com/user-attachments/assets/4963b526-aa6d-43cf-b312-3a0d11647277)
 
+Finally, after adding the monomer and creating this new bond, click `Sculpt` to relax the molecule (you might have to click it again once you think the molecule looks OK, or else it will keep running).
+Our polymer now looks like this.
+
 ![dimer](https://github.com/user-attachments/assets/6b8e7570-c893-4dda-9fce-1bd3f29e7664)
 
 There you go! You've created a dimer. Repeat these steps to make a polymer, creating and copying objects as and where you need them.
+
+Once you're done, you can export the file as a PDB or SDF or any other file format (TinkerXYZ is not supported), and use it as needed.
 
 NOTE - The order of the atoms in a PDB (or XYZ) file will be the same order you use to add atoms to a structure. 
 That is why, we prefer making a monomer, and then making multiple copies of it, adding them to the structure one at a time.
