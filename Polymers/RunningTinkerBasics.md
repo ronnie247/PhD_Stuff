@@ -1,6 +1,6 @@
 # Tinker simulations
 
-Log onto ARC and create/go to the directory where you have your input Tinker XYZ file (see `PDBtoTinkerXYZ.md` if you don't have such input). 
+Log onto ARC and create/go to the directory where you have your input Tinker XYZ file (the one we made after parameterization). 
 
 
 To run a tinker molecular dynamics simulation you will always need the following file types: 
