@@ -38,10 +38,15 @@ Now copy the glucose object to obj01 (which you can rename to pol_progress or so
 
 ![copytoold](https://github.com/user-attachments/assets/766b2f96-06c4-4a4b-8035-49a3d9933e01)
 
+Now use the builder window (shown here) to delete one of the oxygen atoms (I've deleted the one bonded to C6) and create a bond by selecting C6 atom and the O atom bonded to C1.
+
+![builder](https://github.com/user-attachments/assets/4963b526-aa6d-43cf-b312-3a0d11647277)
+
+![dimer](https://github.com/user-attachments/assets/6b8e7570-c893-4dda-9fce-1bd3f29e7664)
+
+There you go! You've created a dimer. Repeat these steps to make a polymer, creating and copying objects as and where you need them.
+
 NOTE - The order of the atoms in a PDB (or XYZ) file will be the same order you use to add atoms to a structure. 
 That is why, we prefer making a monomer, and then making multiple copies of it, adding them to the structure one at a time.
 Then the PDB will have atom ordering that shows one block for monomer 1, then monomer 2 and so on. This will help us change atom types, should we need to do so manually.
 
-
-
-For heteropolymers, you'll probably have to come up with your own shortcuts to make it quickly, although I will be mentioning some general tips.
